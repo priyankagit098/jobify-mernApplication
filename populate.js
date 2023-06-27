@@ -1,0 +1,29 @@
+import { readFile } from "fs/promises";
+
+import dotenv from "dotenv";
+dotenv.config()
+
+
+
+import connectDB from "./db/database.js";
+
+import Job from "./models/jobs.js";
+
+
+const start = async() => {
+    try {
+        await connectDB(process.env.MONGO_URL)
+        // await Job.deleteMany()
+        const jsonProducts= JSON.parse(
+            await readFile(new URL('./mock-data.json', import.meta.url))
+        )
+        await Job.create(jsonProducts)
+        console.log("Success created all jobs")
+        process.exit(0)
+    } catch (error) {
+        console.log(error)
+        process.exit(1)
+    }
+}
+
+start()
