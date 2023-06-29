@@ -7,7 +7,7 @@ import { useAppContext } from '../context/appContext';
 const SearchComponent = () => {
   const [localSearch, setLocalSearch]= useState("")
 const {
-  isLoading, search, searchStatus, searchType,sort, sortOptions, handleChange, clearFilters, jobTypeOptions, statusOptions
+  isLoading, searchStatus, searchType,sort, sortOptions, handleChange, clearFilters, jobTypeOptions, statusOptions
 }    =useAppContext()
 
 const handleSearch=(e)=> {

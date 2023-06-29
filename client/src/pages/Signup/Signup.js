@@ -50,7 +50,6 @@ registerUser(details)
 
 
 
-  console.log(details);
   
 }
 

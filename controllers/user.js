@@ -17,7 +17,7 @@ const register= async(req, res, next) => {
   const { name, email, password} = req.body;
    if (!name || !email || !password) {
     // invoking instance  
-    throw new BadRequestError("Please provide all values");
+    res.status(400).json({msg: "Please provide all Values"})
    }
 
    try {

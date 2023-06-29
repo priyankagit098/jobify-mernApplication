@@ -29,8 +29,10 @@ const initialState= {
     position: "",
     company: "",
  
-    jobTypeOptions: ["full-time", "part-time", "internship"],
-    jobType: "full-time",
+    jobTypeOptions: ["part-time", "internship", "full-time"],
+    jobType:"part-time",
+
+
     statusOptions: ["interview", "pending", "declined"],
 
     status: "pending",
@@ -173,9 +175,16 @@ axiosInstance.interceptors.response.use((response) => {
       }
      
       catch (error) {
-         dispatch({type: LOGIN_USER_ERROR, payload: {msg : error.response.data.msg},
+        if (error.response.status === 429) {
+           
+        dispatch({type: LOGIN_USER_ERROR, payload: {msg : "Too many requests, please try later"},
         })
-        console.log(error.response.data.msg)
+        }
+        
+        
+        dispatch({type: LOGIN_USER_ERROR, payload: {msg : error.response.data.msg},
+        })
+        
       }
     
     clearAlert()
@@ -251,14 +260,14 @@ const createJob = async() => {
 
 try {
   const {position, company, jobLocation, jobType, status}= state
-  await axiosInstance.post("/jobs/new", {
+ const response= await axiosInstance.post("/jobs/new", {
     position, company, jobLocation, jobType, status
   })
  
-
+   
   dispatch({type: CREATE_USER_SUCCESS})
   dispatch({type: CLEAR_VALUES})
-  
+  console.log(response)
 }
 
 catch (error) {
@@ -268,7 +277,7 @@ catch (error) {
     })
   
    
-  console.log(error.response)
+  // console.log(error.response)
 }
 
 clearAlert()

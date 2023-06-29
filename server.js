@@ -4,6 +4,7 @@ const app = express();
 
 import morgan from "morgan";
 import "express-async-errors";
+
 import cookieParser from 'cookie-parser';
 import dotenv from "dotenv";
 import connectDB from "./db/database.js";

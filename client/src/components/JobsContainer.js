@@ -9,7 +9,11 @@ import Alert from './Alert';
 const JobsContainer = () => {
   const { getJobs, jobs, isLoading, totalJobs, search, searchStatus, sort, searchType, numOfPages, page, showAlert } = useAppContext();
   useEffect(() => {
-    getJobs();
+    const delayForTyping= setTimeout(() => {
+      getJobs();
+    }, 400)
+    return () => clearTimeout(delayForTyping)
+    
     // eslint-disable-next-line
   }, [ page,search, searchStatus, searchType, sort]);
 

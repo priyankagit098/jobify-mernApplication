@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { timeStamp } from "console";
+
 
 
 const UserSchema = new mongoose.Schema({
@@ -58,14 +58,7 @@ const UserSchema = new mongoose.Schema({
 // this is a hook that gets called before we save the document, but not for every method
 // it going to trigger it.
 
-  UserSchema.pre("save", async function() {
-  
-    // return which values ex names, email are updating
-    if(!this.isModified('password')) return
-    const salt = await bcrypt.genSalt(10);
-    this.password= await bcrypt.hash(this.password, salt)
-      // this points back to UserSchema
-  })
+
 
 // // from this function return jsonwebtoken
   UserSchema.methods.createJWT= function() {

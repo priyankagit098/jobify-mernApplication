@@ -7,7 +7,7 @@ const Navbar = () => {
   const [showLogout, setShowLogout] = useState(false)
   const {toggleSidebar, logoutUser} = useAppContext()
   const {user}= useAppContext()
-  console.log(user)
+  
   
   return (
     <Wrapper>

@@ -165,7 +165,7 @@ if (action.type===HANDLE_CHANGE) {
       company: "",
       jobLocation: state.userlocation,
       jobTypeOptions: ["full-time", "part-time", "internship"],
-      jobType: "fulll-time",
+      jobType: "part-time",
       statusOptions: ["interview", "pending", "declined"],
   
       status: "pending",
@@ -191,7 +191,8 @@ if (action.type===CREATE_USER_SUCCESS) {
      
      showAlert: true,
      alertType: "success",
-     alertText: "New Job Created..."
+     alertText: "New Job Created...",
+     jobType: "part-time"
 
   }
 }

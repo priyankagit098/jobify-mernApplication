@@ -19,6 +19,8 @@ try {
 }
 catch(error) {
     res.status(500).json({msg: "Internal error"})
+
+    
 }
 
 }
@@ -71,7 +73,6 @@ const getAllJobs = async (req, res) => {
         queryObject.position= {$regex : search, $options: "i"};
     }
  
-    console.log(queryObject)
 
 
 try {
